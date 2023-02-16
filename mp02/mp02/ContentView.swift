@@ -51,9 +51,7 @@ struct ContentView: View {
                             .foregroundColor(Color("LightGray"))
                     }
                     Spacer()
-                    Image(systemName: "heart")
-                        .font(.title2)
-                        .foregroundColor(Color("LightGray"))
+                    LikeButton()
                 }
                 .padding()
                 
@@ -117,6 +115,20 @@ struct ContentView: View {
                 .padding()
 
             }
+        }
+    }
+}
+
+struct LikeButton: View {
+    @State private var isLiked = false
+    
+    var body: some View {
+        Button(action: {
+            self.isLiked.toggle()
+        }) {
+            Image(systemName: isLiked ? "heart.fill": "heart")
+                .font(.title2)
+                .foregroundColor(isLiked ? Color(.systemGreen): Color("LightGray"))
         }
     }
 }
