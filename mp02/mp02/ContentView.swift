@@ -57,17 +57,20 @@ struct ContentView: View {
                 }
                 .padding()
                 
-                // slider
-                HStack {
-                    Text("2:15")
-                        .foregroundColor(Color("LightGray"))
-                        .font(.caption)
-                    Spacer()
-                    Text("-3:33")
-                        .foregroundColor(Color("LightGray"))
-                        .font(.caption)
+                VStack {
+                    // slider
+                    
+                    HStack {
+                        Text("2:15")
+                            .foregroundColor(Color("LightGray"))
+                            .font(.caption)
+                        Spacer()
+                        Text("-3:33")
+                            .foregroundColor(Color("LightGray"))
+                            .font(.caption)
+                    }
+                    .padding()
                 }
-                .padding()
                 
                 HStack {
                     Group {
@@ -112,11 +115,7 @@ struct ContentView: View {
                     }
                 }
                 .padding()
-                
-                
-                
-                
-                
+
             }
         }
     }
