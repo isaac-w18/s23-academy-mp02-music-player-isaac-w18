@@ -72,21 +72,17 @@ struct ContentView: View {
                 
                 HStack {
                     Group {
-                        Image(systemName: "shuffle")
-                            .font(.title2)
+                        Shuffle()
                         Spacer()
                         Image(systemName: "backward.end.fill")
                             .font(.title2)
                         Spacer()
-                        Image(systemName: "play.circle.fill")
-                            .font(.largeTitle)
+                        PlayPauseButton()
                         Spacer()
                         Image(systemName: "forward.end.fill")
                             .font(.title2)
                         Spacer()
-                        Image(systemName: "arrow.rectanglepath")
-                            .font(.title2)
-                            .rotationEffect(.degrees(180))
+                        Loop()
                     }
                     .foregroundColor(.white)
                 }
@@ -101,16 +97,18 @@ struct ContentView: View {
                     Image(systemName: "square.and.arrow.up")
                         .foregroundColor(.white)
                         .padding()
-                    VStack {
-                        Image(systemName: "capsule")
-                            .foregroundColor(.white)
-                        Image(systemName: "line.diagonal")
-                            .foregroundColor(.white)
-                            .rotationEffect(.degrees(45))
-                        Image(systemName: "line.diagonal")
-                            .foregroundColor(.white)
-                            .rotationEffect(.degrees(45))
-                    }
+                    Image(systemName: "text.line.first.and.arrowtriangle.forward")
+                        .foregroundColor(.white)
+//                    VStack {
+//                        Image(systemName: "capsule")
+//                            .foregroundColor(.white)
+//                        Image(systemName: "line.diagonal")
+//                            .foregroundColor(.white)
+//                            .rotationEffect(.degrees(45))
+//                        Image(systemName: "line.diagonal")
+//                            .foregroundColor(.white)
+//                            .rotationEffect(.degrees(45))
+//                    }
                 }
                 .padding()
 
@@ -129,6 +127,50 @@ struct LikeButton: View {
             Image(systemName: isLiked ? "heart.fill": "heart")
                 .font(.title2)
                 .foregroundColor(isLiked ? Color(.systemGreen): Color("LightGray"))
+        }
+    }
+}
+
+struct Shuffle: View {
+    @State private var shuffle = false
+    
+    var body: some View {
+        Button(action: {
+            self.shuffle.toggle()
+        }) {
+            Image(systemName: "shuffle")
+                .font(.title2)
+                .foregroundColor(shuffle ? Color(.systemGreen): Color(.white))
+        }
+    }
+    
+}
+
+struct PlayPauseButton: View {
+    @State private var playing = true
+    
+    var body: some View {
+        Button(action: {
+            self.playing.toggle()
+        }) {
+            Image(systemName: playing ? "pause.circle.fill": "play.circle.fill")
+                .font(.largeTitle)
+        }
+    }
+    
+}
+
+struct Loop: View {
+    @State private var loop = false
+    
+    var body: some View {
+        Button(action: {
+            self.loop.toggle()
+        }) {
+            Image(systemName: "arrow.rectanglepath")
+                .font(.title2)
+                .rotationEffect(.degrees(180))
+                .foregroundColor(loop ? Color(.white): Color(.systemGreen))
         }
     }
 }
