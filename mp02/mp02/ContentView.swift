@@ -56,7 +56,8 @@ struct ContentView: View {
                 .padding()
                 
                 VStack {
-                    // slider
+                    ProgressView(value: 0.7)
+                                        .padding([.leading, .trailing])
                     
                     HStack {
                         Text("2:15")
